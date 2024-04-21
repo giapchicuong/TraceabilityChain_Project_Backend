@@ -1,8 +1,11 @@
 require("dotenv").config();
-import express from "express";
+// import express from "express";
+// import bodyParser from "body-parser";
+// import cookieParser from "cookie-parser";
+const express = require("express");
+const bodyParser = require("body-parser").config();
+const cookieParser = require("cookie-parser").config();
 import initApiRoutes from "./routes/api";
-import bodyParser from "body-parser";
-import cookieParser from "cookie-parser";
 import configCors from "./config/cors";
 import connection from "./config/connectDB";
 const app = express();
