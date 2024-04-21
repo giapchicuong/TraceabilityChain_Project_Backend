@@ -30,4 +30,4 @@ const configCors = (app) => {
     next();
   });
 };
-export default configCors;
+module.exports = configCors;

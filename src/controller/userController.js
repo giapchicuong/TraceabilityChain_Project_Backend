@@ -1,13 +1,11 @@
-import userService from "../service/userService";
+const userService = require("../service/userService");
+
 const readFunc = async (req, res) => {
   try {
     if (req.query.page && req.query.limit) {
       let page = req.query.page;
       let limit = req.query.limit;
-      let data = await userService.getAllUserWithPagination(
-        +page,
-        +limit,
-      );
+      let data = await userService.getAllUserWithPagination(+page, +limit);
       return res.status(200).json({
         EM: data.EM, //error message
         EC: data.EC, //error code

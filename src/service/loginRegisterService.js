@@ -1,8 +1,8 @@
-import db from "../models/index";
-import checkValidService from "./checkValidService";
-import { getGroupWithRoles } from "./jwtService";
-import JWTAction from "../middleware/JWTAction";
-import { Op } from "sequelize";
+const db = require("../models/index");
+const checkValidService = require("./checkValidService");
+const { getGroupWithRoles } = require("./jwtService");
+const JWTAction = require("../middleware/JWTAction");
+const { Op } = require("sequelize");
 
 const registerNewUser = async (rawUserData) => {
   try {

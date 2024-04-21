@@ -1,10 +1,14 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
-import userController from "../controller/userController";
-import { checkUserJwt, checkUserPermission } from "../middleware/JWTAction";
-import loginRegisterController from "../controller/loginRegisterController";
-import groupController from "../controller/groupController";
-import roleController from "../controller/roleController";
+const userController = require("../controller/userController");
+const {
+  checkUserJwt,
+  checkUserPermission,
+} = require("../middleware/JWTAction");
+const loginRegisterController = require("../controller/loginRegisterController");
+const groupController = require("../controller/groupController");
+const roleController = require("../controller/roleController");
+
 const initApiRoutes = (app) => {
   router.all("*", checkUserJwt, checkUserPermission);
   router.post("/register", loginRegisterController.handleRegister);
@@ -35,4 +39,4 @@ const initApiRoutes = (app) => {
   return app.use("/api/v1/", router);
 };
 
-export default initApiRoutes;
+module.exports = initApiRoutes;
