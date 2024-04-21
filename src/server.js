@@ -8,9 +8,10 @@ require("dotenv").config();
 const express = require("express");
 const bodyParser = require("body-parser").config();
 const cookieParser = require("cookie-parser").config();
-import initApiRoutes from "./routes/api";
-import configCors from "./config/cors";
-import connection from "./config/connectDB";
+const initApiRoutes = require("./routes/api");
+const configCors = require("./config/cors");
+const connection = require("./config/connectDB");
+
 const app = express();
 
 const PORT = process.env.PORT || 8080;
