@@ -1,11 +1,11 @@
-const {
+import {
   getAllRole,
   createNewRole,
   updateRole,
   deleteRole,
   getRoleByGroup,
   assignRoleToGroup,
-} = require("../service/roleService");
+} from "../service/roleService";
 
 const readFunc = async (req, res) => {
   try {

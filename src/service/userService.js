@@ -1,9 +1,9 @@
-const db = require("../models/index");
-const {
+import db from "../models/index";
+import {
   hashUserPassword,
   checkEmailExist,
   checkPhoneExist,
-} = require("./checkValidService");
+} from "./checkValidService";
 
 const getAllUser = async () => {
   try {

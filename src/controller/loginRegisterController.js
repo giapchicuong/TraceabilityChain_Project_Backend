@@ -1,4 +1,4 @@
-const loginRegisterService = require("../service/loginRegisterService");
+z
 
 const handleRegister = async (req, res) => {
   try {

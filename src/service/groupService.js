@@ -1,4 +1,4 @@
-const db = require("../models/index");
+import db from "../models/index";
 
 const getAllGroup = async () => {
   try {

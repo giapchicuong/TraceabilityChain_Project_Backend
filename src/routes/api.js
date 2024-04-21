@@ -1,14 +1,10 @@
-const express = require("express");
+import express from "express";
 const router = express.Router();
-const userController = require("../controller/userController");
-const {
-  checkUserJwt,
-  checkUserPermission,
-} = require("../middleware/JWTAction");
-const loginRegisterController = require("../controller/loginRegisterController");
-const groupController = require("../controller/groupController");
-const roleController = require("../controller/roleController");
-
+import userController from "../controller/userController";
+import { checkUserJwt, checkUserPermission } from "../middleware/JWTAction";
+import loginRegisterController from "../controller/loginRegisterController";
+import groupController from "../controller/groupController";
+import roleController from "../controller/roleController";
 const initApiRoutes = (app) => {
   router.all("*", checkUserJwt, checkUserPermission);
   router.post("/register", loginRegisterController.handleRegister);
