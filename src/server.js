@@ -1,14 +1,14 @@
 require("dotenv").config();
 // import express from "express";
+// import initApiRoutes from "./routes/api";
 // import bodyParser from "body-parser";
 // import cookieParser from "cookie-parser";
-// import initApiRoutes from "./routes/api";
 // import configCors from "./config/cors";
 // import connection from "./config/connectDB";
 const express = require("express");
-const bodyParser = require("body-parser").config();
-const cookieParser = require("cookie-parser").config();
 const initApiRoutes = require("./routes/api");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 const configCors = require("./config/cors");
 const connection = require("./config/connectDB");
 
