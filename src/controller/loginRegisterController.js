@@ -1,4 +1,4 @@
-z
+import loginRegisterService from "../service/loginRegisterService";
 
 const handleRegister = async (req, res) => {
   try {
