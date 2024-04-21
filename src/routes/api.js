@@ -1,4 +1,4 @@
-import express from "express";
+const express = require("express");
 const router = express.Router();
 import userController from "../controller/userController";
 import { checkUserJwt, checkUserPermission } from "../middleware/JWTAction";
