@@ -1,4 +1,4 @@
-import loginRegisterService from "../service/loginRegisterService";
+const loginRegisterService = require("../service/loginRegisterService");
 
 const handleRegister = async (req, res) => {
   try {

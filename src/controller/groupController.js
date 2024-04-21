@@ -1,9 +1,9 @@
-import {
+const {
   getAllGroup,
   createNewGroup,
   updateGroup,
   deleteGroup,
-} from "../service/groupService";
+} = require("../service/groupService");
 
 const readFunc = async (req, res) => {
   try {
