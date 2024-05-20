@@ -7,9 +7,9 @@ const {
 
 const getAllUser = async () => {
   try {
-    let users = await db.User.findAll({
+    let users = await db.Users.findAll({
       attributes: ["id", "email", "username", "address", "phone", "sex"],
-      include: { model: db.Group, attributes: ["id", "name", "description"] },
+      include: { model: db.Groups, attributes: ["id", "name", "description"] },
     });
     if (users) {
       return {
@@ -36,9 +36,9 @@ const getAllUser = async () => {
 const getAllUserWithPagination = async (page, limit) => {
   try {
     let offset = (page - 1) * limit;
-    const { count, rows } = await db.User.findAndCountAll({
+    const { count, rows } = await db.Users.findAndCountAll({
       attributes: ["id", "username", "email", "phone", "sex", "address"],
-      include: { model: db.Group, attributes: ["id", "name", "description"] },
+      include: { model: db.Groups, attributes: ["id", "name", "description"] },
       offset: offset,
       limit: limit,
       order: [["id", "ASC"]],
@@ -86,7 +86,7 @@ const createNewUser = async (rawUserData) => {
     // Hash password
     let hashPass = hashUserPassword(rawUserData.password);
     // create new user
-    let data = await db.User.create({
+    let data = await db.Users.create({
       ...rawUserData,
       password: hashPass,
     });
@@ -116,7 +116,7 @@ const updateUser = async (rawUserData) => {
         DT: "group",
       };
     }
-    let user = await db.User.findOne({
+    let user = await db.Users.findOne({
       where: { id: rawUserData.id },
     });
     if (user) {
@@ -149,7 +149,7 @@ const updateUser = async (rawUserData) => {
 
 const deleteUser = async (id) => {
   try {
-    let user = await db.User.findOne({
+    let user = await db.Users.findOne({
       where: { id: id },
     });
     if (user) {

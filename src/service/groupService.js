@@ -1,9 +1,8 @@
 const db = require("../models/index");
 
-
 const getAllGroup = async () => {
   try {
-    let groups = await db.Group.findAll({
+    let groups = await db.Groups.findAll({
       attributes: ["id", "name", "description"],
     });
     if (groups) {
@@ -37,10 +36,10 @@ const createNewGroup = async (groups) => {
         DT: "name",
       };
     }
-    let currentGroups = await db.Group.findAll({
+    let currentGroups = await db.Groups.findAll({
       attributes: ["name", "description"],
     });
-    await db.Group.create(groups);
+    await db.Groups.create(groups);
     return {
       EM: `Create group succeeds`,
       EC: 0,
@@ -63,7 +62,7 @@ const updateGroup = async (group) => {
         DT: "name",
       };
     }
-    let currentGroup = await db.Group.findOne({
+    let currentGroup = await db.Groups.findOne({
       where: { id: group.id },
     });
     if (currentGroup) {
@@ -93,7 +92,7 @@ const updateGroup = async (group) => {
 };
 const deleteGroup = async (id) => {
   try {
-    let group = await db.Group.findOne({
+    let group = await db.Groups.findOne({
       where: { id: id },
     });
     if (group) {

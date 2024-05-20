@@ -12,7 +12,7 @@ const checkPassword = (inputPassword, hashPassword) => {
 };
 
 const checkEmailExist = async (userEmail) => {
-  let user = await db.User.findOne({
+  let user = await db.Users.findOne({
     where: { email: userEmail },
   });
   if (user) {
@@ -22,14 +22,14 @@ const checkEmailExist = async (userEmail) => {
 };
 
 const checkPhoneExist = async (userPhone) => {
-  let user = await db.User.findOne({
+  let user = await db.Users.findOne({
     where: { phone: userPhone },
   });
   return user ? true : false;
 };
 
 const checkGroupNameExist = async (groupName) => {
-  let group = await db.Group.findOne({
+  let group = await db.Groups.findOne({
     where: { name: groupName },
   });
   return group ? true : false;

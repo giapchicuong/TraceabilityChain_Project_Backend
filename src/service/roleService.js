@@ -2,7 +2,7 @@ const db = require("../models/index");
 
 const getAllRole = async () => {
   try {
-    let roles = await db.Role.findAll({
+    let roles = await db.Roles.findAll({
       attributes: ["id", "url", "description"],
     });
     if (roles) {
@@ -36,7 +36,7 @@ const createNewRole = async (rawUserData) => {
         DT: "url",
       };
     }
-    let role = await db.Role.create(rawUserData);
+    let role = await db.Roles.create(rawUserData);
     if (role) {
       return {
         EM: `Create role succeeds`,
@@ -61,7 +61,7 @@ const updateRole = async (rawUserData) => {
         DT: "url",
       };
     }
-    let role = await db.Role.findOne({
+    let role = await db.Roles.findOne({
       where: { id: rawUserData.id },
     });
     if (role) {
@@ -91,7 +91,7 @@ const updateRole = async (rawUserData) => {
 };
 const deleteRole = async (id) => {
   try {
-    let role = await db.Role.findOne({
+    let role = await db.Roles.findOne({
       where: { id: id },
     });
     if (role) {
@@ -119,11 +119,11 @@ const deleteRole = async (id) => {
 
 const getRoleByGroup = async (id) => {
   try {
-    let roles = await db.Group.findOne({
+    let roles = await db.Groups.findOne({
       where: { id: id },
       attributes: ["id", "name", "description"],
       include: {
-        model: db.Role,
+        model: db.Roles,
         attributes: ["id", "url", "description"],
         through: { attributes: [] },
       },
@@ -151,10 +151,10 @@ const getRoleByGroup = async (id) => {
 };
 const assignRoleToGroup = async (data) => {
   try {
-    await db.Group_Role.destroy({
+    await db.Group_Roles.destroy({
       where: { groupId: +data.groupId },
     });
-    await db.Group_Role.bulkCreate(data.groupRoles);
+    await db.Group_Roles.bulkCreate(data.groupRoles);
     return {
       EM: "Assign role to group succeeds",
       EC: 0,

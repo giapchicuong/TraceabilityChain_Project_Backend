@@ -26,7 +26,7 @@ const registerNewUser = async (rawUserData) => {
     }
     let hasPass = checkValidService.hashUserPassword(rawUserData.password);
 
-    let user = await db.User.create({
+    let user = await db.Users.create({
       email: rawUserData.email,
       phone: rawUserData.phone,
       username: rawUserData.username,
@@ -58,7 +58,7 @@ const registerNewUser = async (rawUserData) => {
 
 const handleUserLogin = async (rawUserData) => {
   try {
-    let user = await db.User.findOne({
+    let user = await db.Users.findOne({
       where: {
         [Op.or]: [
           { email: rawUserData.valueLogin },

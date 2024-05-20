@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert(
-      "Group_Role",
+      "Group_Roles",
       [
         {
           groupId: 1,
