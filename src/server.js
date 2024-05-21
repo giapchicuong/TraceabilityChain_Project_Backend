@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 8080;
 
 // config corn
 configCors(app);
-app.set("trust proxy", 1);
+
 
 // config body parser
 app.use(bodyParser.json());
